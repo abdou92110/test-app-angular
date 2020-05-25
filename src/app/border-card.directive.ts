@@ -1,14 +1,25 @@
-import { Directive, ElementRef } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
   
 @Directive({
   selector: '[pkmnBorderCard]'
 })
 export class BorderCardDirective {
     constructor(private el: ElementRef) {
-        this.setBorder('#f5f5f5');
+        this.setBorder('grey');
         this.setHeight(180);
     }
+
+    @Input('pkmnBorderCard') borderColor:string;
+    
+
+    @HostListener('mouseenter')onMonseEnter() {
+        this.setBorder(this.borderColor || 'crimson');
+    }
   
+    @HostListener('mouseleave') onMouseLeave(){
+        this.setBorder('grey');
+    }
+
     private setBorder(color: string) {
         let border = 'solid 4px ' + color;
         this.el.nativeElement.style.border = border;
