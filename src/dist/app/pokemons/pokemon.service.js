@@ -29,13 +29,20 @@ var PokemonsService = /** @class */ (function () {
             return rxjs_1.of(result);
         };
     };
+    PokemonsService.prototype.searchPokemons = function (term) {
+        var _this = this;
+        if (!term.trim()) {
+            return rxjs_1.of([]);
+        }
+        return this.http.get(this.pokemonsUrl + "/?name=" + term).pipe(operators_1.tap(function (_) { return _this.log("found pokemons matching \"" + term + "\""); }), operators_1.catchError(this.handleError('searchPokemons', [])));
+    };
     PokemonsService.prototype.deletePokemon = function (pokemon) {
         var _this = this;
-        var url = '${this.pokemonsUrl}/${pokemon.id}';
+        var url = this.pokemonsUrl + "/" + pokemon.id;
         var httpOptions = {
             headers: new http_1.HttpHeaders({ 'Content-Type': 'application/json' })
         };
-        return this.http.delete(url, httpOptions).pipe(operators_1.tap(function (_) { return _this.log('deleted pokemon id=${pokemon.id}'); }), operators_1.catchError(this.handleError('deletePokemon')));
+        return this.http.delete(url, httpOptions).pipe(operators_1.tap(function (_) { return _this.log("deleted pokemon id=" + pokemon.id); }), operators_1.catchError(this.handleError('deletePokemon')));
     };
     PokemonsService.prototype.updatePokemon = function (pokemon) {
         var _this = this;

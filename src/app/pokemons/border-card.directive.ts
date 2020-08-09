@@ -13,7 +13,7 @@ export class BorderCardDirective {
     
 
     @HostListener('mouseenter')onMonseEnter() {
-        this.setBorder(this.borderColor || 'crimson');
+        this.setBorder(this.borderColor || 'teal');
     }
   
     @HostListener('mouseleave') onMouseLeave(){

@@ -17,7 +17,7 @@ var BorderCardDirective = /** @class */ (function () {
         this.setHeight(180);
     }
     BorderCardDirective.prototype.onMonseEnter = function () {
-        this.setBorder(this.borderColor || 'crimson');
+        this.setBorder(this.borderColor || 'teal');
     };
     BorderCardDirective.prototype.onMouseLeave = function () {
         this.setBorder('grey');
