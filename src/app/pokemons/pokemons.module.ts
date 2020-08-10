@@ -14,6 +14,8 @@ import { BorderCardDirective } from './border-card.directive';
 import { PokemonTypeColorPipe } from './pokemon-type-color.pipe';
 import { PokemonsService } from './pokemon.service';
 
+import { AuthGuard } from '../auth-guard.service';
+
   
 @NgModule({
     imports: [
@@ -32,6 +34,6 @@ import { PokemonsService } from './pokemon.service';
         BorderCardDirective,
         PokemonTypeColorPipe,
     ],
-    providers: [PokemonsService]
+    providers: [PokemonsService,AuthGuard]
 })
 export class PokemonsModule { }
